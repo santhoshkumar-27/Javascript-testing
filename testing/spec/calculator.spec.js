@@ -22,6 +22,12 @@ describe('calculator testing suites', () => { // this is test suite is group of 
         const result = calculator.divide(5, 5)
         expect(result).toBe(1);
     })
+
+    xit('should be in disabled stated', () => {
+        const calculator = new Calculator();
+        const result = calculator.divide(5, 5)
+        expect(result).toBe(1);
+    })
 });
 
 // we can add more test suites like this
@@ -32,3 +38,22 @@ describe('calculator testing suites', () => {
     })
 });
 */
+
+// if you want to disable the test just prefix ('x') in (it function); or disable the complete test suite
+/*
+xdescribe('calculator testing suites', () => {
+    xit('checking the sum isolated function taking two paramaters', () => {
+
+    })
+});
+*/
+xdescribe('disabled test suite', () => {
+    xit('disabled state for the test or spec', () => {
+        const result = 10;
+        expect(result).toBe(10);
+        /*
+            result is a actual value compare with
+            10 -> is the expected value
+        */ 
+    })
+});
