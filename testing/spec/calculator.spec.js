@@ -28,6 +28,17 @@ describe('calculator testing suites', () => { // this is test suite is group of 
         const result = calculator.divide(5, 5)
         expect(result).toBe(1);
     })
+
+    it('should compare non primitive type', () => {
+        let person1 = {
+            name: 'santhosh'
+        }
+        let person2 = {
+            name: 'santhosh'
+        }
+        // expect(person1).toBe(person2); // not same
+        expect(person1).toBe(person1); // now the tripple equal to check the memory address of the objects its same
+    })
 });
 
 // we can add more test suites like this
@@ -54,6 +65,22 @@ xdescribe('disabled test suite', () => {
         /*
             result is a actual value compare with
             10 -> is the expected value
-        */ 
+        */
     })
 });
+
+/*
+    if you have compare === of primitive types it should compare only values and type
+    but if you are compare with the non-primitive types of like object arrays
+    let person1 = {
+        name: 'santhosh'
+    }
+    let person2 = {
+        name: 'santhosh'
+    }
+
+    here the two object have same value but different memory address
+    so tha person1 === person2 if would fails
+
+    person1 === person2 is would pass
+*/
