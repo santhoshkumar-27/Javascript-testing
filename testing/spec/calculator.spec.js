@@ -23,13 +23,23 @@ describe('calculator testing suites', () => { // this is test suite is group of 
         expect(result).toBe(1);
     })
 
+    it('should compare the objects', () => {
+        const calculator1 = new Calculator();
+        const calculator2 = new Calculator();
+        // expect(calculator2).toBe(calculator1);
+        expect(calculator2).toEqual(calculator1); // toEqual also check the expect and actual behaivor of
+        /*
+            compare key -> name and a type
+            compare value -> of same value and a type
+        */
+    });
     xit('should be in disabled stated', () => {
         const calculator = new Calculator();
         const result = calculator.divide(5, 5)
         expect(result).toBe(1);
     })
 
-    it('should compare non primitive type', () => {
+    xit('should compare non primitive type', () => {
         let person1 = {
             name: 'santhosh'
         }
