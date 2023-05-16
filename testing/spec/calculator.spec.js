@@ -33,6 +33,14 @@ describe('calculator testing suites', () => { // this is test suite is group of 
             compare value -> of same value and a type
         */
     });
+    it('should be the truthy', () => {
+        const calculator = new Calculator();
+        expect(calculator).toBeTruthy();
+    })
+    it('should be the falsy', () => {
+        const calculator = new Calculator();
+        expect(calculator.add(0, 0)).toBeFalsy();
+    })
     xit('should be in disabled stated', () => {
         const calculator = new Calculator();
         const result = calculator.divide(5, 5)
