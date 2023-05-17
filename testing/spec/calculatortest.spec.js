@@ -29,5 +29,10 @@ describe('calculatortest file', () => {
         expect(calculator.subtract(10, 'a')).toBeNaN();
         expect(calculator.multiple(10, 'a')).toBeNaN();
         expect(calculator.divide(10, 'a')).toBeNaN();
-    })
+    });
+    it('should throw the error for divide', () => {
+        const calculator = new Calculator();
+        expect(function (){calculator.divide(10, 0)}).toThrow();
+        expect(function (){calculator.divide(10, 0)}).toThrow(new Error('value is not equal to zero'));
+    });
 })
