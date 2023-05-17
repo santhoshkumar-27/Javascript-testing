@@ -35,4 +35,12 @@ describe('calculatortest file', () => {
         expect(function (){calculator.divide(10, 0)}).toThrow();
         expect(function (){calculator.divide(10, 0)}).toThrow(new Error('value is not equal to zero'));
     });
+    it('should throw the custom error for details', () => {
+        const calculator = new Calculator();
+        expect(function (){calculator.divide(10, 0)}).toThrowError();
+        expect(function (){calculator.divide(10, 0)}).toThrowError('value is not equal to zero');
+        // expect(function (){calculator.divide(10, 0)}).toThrowError(Error, 'value is not equal to zero');
+        expect(function (){calculator.divide(10, 0)}).toThrowError(ArithmaticError, 'value is not equal to zero');
+
+    })
 })
