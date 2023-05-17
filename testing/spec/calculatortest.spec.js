@@ -22,6 +22,12 @@ describe('calculatortest file', () => {
     })
     it('should  contain constructor name same', () => {
         const calculator = new Calculator();
-        expect(calculator.constructor.name).toContain('Calculator')
+        expect(calculator.constructor.name).toContain('Calculator');
+    })
+    it('should handled the tobeNan matcher', () => {
+        const calculator = new Calculator();
+        expect(calculator.subtract(10, 'a')).toBeNaN();
+        expect(calculator.multiple(10, 'a')).toBeNaN();
+        expect(calculator.divide(10, 'a')).toBeNaN();
     })
 })
