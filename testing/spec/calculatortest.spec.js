@@ -20,4 +20,8 @@ describe('calculatortest file', () => {
         // null is absence of value not to be undefined or any primitive data types
         expect(area).toBeNull(area);
     })
+    it('should  contain constructor name same', () => {
+        const calculator = new Calculator();
+        expect(calculator.constructor.name).toContain('Calculator')
+    })
 })
