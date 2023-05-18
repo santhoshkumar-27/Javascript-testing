@@ -64,4 +64,15 @@ describe('calculatortest file', () => {
         expect(calculator.add(10, 0)).toEqual(jasmine.any(Number));
         // expect(calculator.add(10, 0)).toEqual(jasmine.any(String));
     })
+    // objectContaining
+    it('should contain total as key', () => {
+        const calculator = new Calculator();
+        expect(calculator).toEqual(jasmine.objectContaining({
+            total: 0
+        }));
+        // expect(calculator).toEqual(jasmine.objectContaining({
+        //     total: 10
+        // }));
+        expect(typeof calculator.total).toEqual(jasmine.stringContaining('number'))
+    })
 })
