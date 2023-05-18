@@ -54,4 +54,14 @@ describe('calculatortest file', () => {
         const calculator = new Calculator();
         expect(calculator.add(10, 0)).toEqual(jasmine.anything());
     })
+    /*
+        anything is to check the result of instance of class
+    */
+    it('should be the instance of calculator', () => {
+        const calculator = new Calculator();
+        expect(calculator).toEqual(jasmine.any(Calculator));
+        expect(calculator).toEqual(jasmine.any(Object));
+        expect(calculator.add(10, 0)).toEqual(jasmine.any(Number));
+        // expect(calculator.add(10, 0)).toEqual(jasmine.any(String));
+    })
 })
