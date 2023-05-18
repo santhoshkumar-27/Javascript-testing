@@ -49,4 +49,9 @@ describe('calculatortest file', () => {
         expect(calculator.add(10, 0)).toMatch(/[-+]?\d+/);
         expect(typeof calculator.add(10, 0)).toMatch('number');
     })
+
+    it('should be able to return the addition number', () => {
+        const calculator = new Calculator();
+        expect(calculator.add(10, 0)).toEqual(jasmine.anything());
+    })
 })
