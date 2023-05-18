@@ -43,4 +43,10 @@ describe('calculatortest file', () => {
         expect(function () { calculator.divide(10, 0) }).toThrowError(ArithmaticError, 'value is not equal to zero');
 
     })
+    it('should be able to return the number', () => {
+        const calculator = new Calculator();
+        expect(calculator.add(10, 0)).toBe(10);
+        expect(calculator.add(10, 0)).toMatch(/[-+]?\d+/);
+        expect(typeof calculator.add(10, 0)).toMatch('number');
+    })
 })
