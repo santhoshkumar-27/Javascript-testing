@@ -1,57 +1,60 @@
 describe('calculator testing suites', () => { // this is test suite is group of test
-
+    let calculator;
+    let calculator1;
+    let result;
+    beforeEach(() => {
+        // executes before execution of each spec in the suite
+        calculator = new Calculator();
+        calculator1 = new Calculator();
+    })
+    afterEach(() => {
+        // executes before execution of each spec in the suite
+        // clean up after the spec execution
+        result = undefined;
+    })
     describe('calculator', () => {
 
         describe('add()', () => {
             it('should sum the two number taking from paramaters', () => {
-                const calculator = new Calculator();
-                const result = calculator.add(5, 5)
+                result = calculator.add(5, 5)
                 expect(result).toBe(10);
             })
         })
 
         describe('subtract()', () => {
             it('should subtract the two number taking from paramaters', () => {
-                const calculator = new Calculator();
-                const result = calculator.subtract(5, 5)
+                 result = calculator.subtract(5, 5)
                 expect(result).toBe(0);
             })
         })
         describe('multiple()', () => {
             it('should multiply the two number taking from paramaters', () => {
-                const calculator = new Calculator();
-                const result = calculator.divide(5, 5)
+                 result = calculator.divide(5, 5)
                 expect(result).toBe(1);
             })
         })
         describe('divide()', () => {
             it('should divide the two number taking from paramaters', () => {
-                const calculator = new Calculator();
-                const result = calculator.multiple(5, 5)
+                 result = calculator.multiple(5, 5)
                 expect(result).toBe(25);
             })
         })
 
         it('should compare the objects', () => {
-            const calculator1 = new Calculator();
-            const calculator2 = new Calculator();
             // expect(calculator2).toBe(calculator1);
-            expect(calculator2).toEqual(calculator1); // toEqual also check the expect and actual behaivor of
+            expect(calculator1).toEqual(calculator); // toEqual also check the expect and actual behaivor of
             /*
                 compare key -> name and a type
                 compare value -> of same value and a type
             */
         });
         it('should be the truthy', () => {
-            const calculator = new Calculator();
             expect(calculator).toBeTruthy();
         })
         it('should be the falsy', () => {
-            const calculator = new Calculator();
             expect(calculator.add(0, 0)).toBeFalsy();
         })
         xit('should be in disabled stated', () => {
-            const calculator = new Calculator();
             const result = calculator.divide(5, 5)
             expect(result).toBe(1);
         })
@@ -112,4 +115,16 @@ xdescribe('disabled test suite', () => {
     so tha person1 === person2 if would fails
 
     person1 === person2 is would pass
+*/
+
+/*
+    jasmine has a life cycle hooks of the setup and teardown
+
+    setup - 
+        beforeEach, - this will be executued before the each spec run
+        beforeAll, - this will be executed only one time before the all specs in the suite
+    
+    teardown
+        afterEach -  this will be executued after the each spec run
+        afterAll - this will be executed only one time after the all specs in the suite
 */
