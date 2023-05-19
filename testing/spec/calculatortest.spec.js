@@ -58,11 +58,14 @@ describe('calculatortest file', () => {
         anything is to check the result of instance of class
     */
     it('should be the instance of calculator', () => {
+        jasmine.addMatchers(customMatcher);
         const calculator = new Calculator();
         expect(calculator).toEqual(jasmine.any(Calculator));
         expect(calculator).toEqual(jasmine.any(Object));
         expect(calculator.add(10, 0)).toEqual(jasmine.any(Number));
         // expect(calculator.add(10, 0)).toEqual(jasmine.any(String));
+        // expect(calculator.total).not.toBeCalculator();
+        expect(calculator).toBeCalculator();
     })
     // objectContaining
     it('should contain total as key', () => {
