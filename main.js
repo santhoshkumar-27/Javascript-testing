@@ -14,6 +14,11 @@ function getInputFromUser(event) {
     const numbers = inputValue.split(operators);
     const num1 = +numbers[0];
     const num2 = +numbers[1];
+    if (isNaN(num1) || isNaN(num2)) {
+        updateResultOnView('number must be entered');
+        event.target.value = null;
+        return;
+    }
     const operator = inputValue.match(operators)[0].trim();
     calculateNumber(num1, num2, operator);
     event.target.value = null;

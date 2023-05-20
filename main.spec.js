@@ -4,7 +4,7 @@ describe('main.js', () => {
 
         })
 
-        it('should validate the operator, if failed call dependency', () => {
+        it('should validate the operator, if failed call error dependency', () => {
             spyOn(window, 'updateResultOnView').and.stub();
             /*
                 here stub means just to pretend the function has to called.
@@ -15,6 +15,23 @@ describe('main.js', () => {
             expect(window.updateResultOnView).toHaveBeenCalled();
         })
 
+        it('should validate the num1, if failed call error dependency', () => {
+            spyOn(window, 'updateResultOnView').and.stub();
+            getInputFromUser({target: {value: 'asdf+5'}});
+            expect(window.updateResultOnView).toHaveBeenCalled();
+        })
+        it('should validate the num2, if failed call error dependency', () => {
+            spyOn(window, 'updateResultOnView').and.stub();
+            getInputFromUser({target: {value: '6+asdf'}});
+            expect(window.updateResultOnView).toHaveBeenCalled();
+        })
+
+        it('should validate the num1 and num2, if passed no need to call error dependency', () => {
+            spyOn(window, 'updateResultOnView').and.stub();
+            getInputFromUser({target: {value: '6+5'}});
+            expect(window.updateResultOnView).toHaveBeenCalledTimes(0);
+        })
+        
         xit('should be split the expression to get number and operator', () =>{
 
         })
