@@ -13,23 +13,30 @@ describe('main.js', () => {
             */
             getInputFromUser({target: {value: 'asdf'}});
             expect(window.updateResultOnView).toHaveBeenCalled();
+            expect(window.updateResultOnView).toHaveBeenCalledWith('Invalid operator you entered');
         })
 
         it('should validate the num1, if failed call error dependency', () => {
             spyOn(window, 'updateResultOnView');
             getInputFromUser({target: {value: 'asdf+5'}});
             expect(window.updateResultOnView).toHaveBeenCalled();
+            expect(window.updateResultOnView).toHaveBeenCalledWith('number must be entered');
         })
         it('should validate the num2, if failed call error dependency', () => {
             spyOn(window, 'updateResultOnView');
             getInputFromUser({target: {value: '6+asdf'}});
             expect(window.updateResultOnView).toHaveBeenCalled();
+            expect(window.updateResultOnView).toHaveBeenCalledWith('number must be entered');
+
         })
 
         it('should validate the num1 and num2, if passed no need to call error dependency', () => {
             spyOn(window, 'updateResultOnView');
             getInputFromUser({target: {value: '6+5'}});
-            expect(window.updateResultOnView).toHaveBeenCalledTimes(0);
+            // expect(window.updateResultOnView).toHaveBeenCalled();
+            expect(window.updateResultOnView).not.toHaveBeenCalledWith('number must be entered');
+            expect(window.updateResultOnView).not.toHaveBeenCalledWith('Invalid operator you entered');
+            expect(window.updateResultOnView).not.toHaveBeenCalledTimes(0);
         })
         
         xit('should be split the expression to get number and operator', () =>{
