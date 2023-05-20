@@ -4,8 +4,15 @@ describe('main.js', () => {
 
         })
 
-        xit('should validate the operator, if failed throw error', () => {
-
+        it('should validate the operator, if failed call dependency', () => {
+            spyOn(window, 'updateResultOnView').and.stub();
+            /*
+                here stub means just to pretend the function has to called.
+                parameter 1 is the method or function which present on object.
+                parameter 2 is the method or function name to spy on
+            */
+            getInputFromUser({target: {value: 'asdf'}});
+            expect(window.updateResultOnView).toHaveBeenCalled();
         })
 
         xit('should be split the expression to get number and operator', () =>{
