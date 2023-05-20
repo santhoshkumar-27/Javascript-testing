@@ -1,9 +1,5 @@
 describe('main.js', () => {
     describe('getInputFromUser()', () => {
-        xit('get input from the element', () => {
-
-        })
-
         it('should validate the operator, if failed call error dependency', () => {
             spyOn(window, 'updateResultOnView');
             /*
@@ -11,60 +7,40 @@ describe('main.js', () => {
                 parameter 1 is the method or function which present on object.
                 parameter 2 is the method or function name to spy on
             */
-            getInputFromUser({target: {value: 'asdf'}});
+            getInputFromUser({ target: { value: 'asdf' } });
             expect(window.updateResultOnView).toHaveBeenCalled();
             expect(window.updateResultOnView).toHaveBeenCalledWith('Invalid operator you entered');
             expect(window.updateResultOnView).toHaveBeenCalledTimes(1);
-        })
+        });
 
         it('should validate the num1, if failed call error dependency', () => {
             spyOn(window, 'updateResultOnView');
-            getInputFromUser({target: {value: 'asdf+5'}});
+            getInputFromUser({ target: { value: 'asdf+5' } });
             expect(window.updateResultOnView).toHaveBeenCalled();
             expect(window.updateResultOnView).toHaveBeenCalledWith('number must be entered');
             expect(window.updateResultOnView).toHaveBeenCalledTimes(1);
-        })
+        });
         it('should validate the num2, if failed call error dependency', () => {
             spyOn(window, 'updateResultOnView');
-            getInputFromUser({target: {value: '6+asdf'}});
+            getInputFromUser({ target: { value: '6+asdf' } });
             expect(window.updateResultOnView).toHaveBeenCalled();
             expect(window.updateResultOnView).toHaveBeenCalledWith('number must be entered');
             expect(window.updateResultOnView).toHaveBeenCalledTimes(1);
-        })
+        });
 
-        it('should validate the num1 and num2, if passed no need to call error dependency', () => {
+        it('should call the calculator with num1, num2, operator', () => {
             spyOn(window, 'updateResultOnView');
-            getInputFromUser({target: {value: '6+5'}});
+            getInputFromUser({ target: { value: '6+5' } });
             // expect(window.updateResultOnView).toHaveBeenCalled();
             expect(window.updateResultOnView).not.toHaveBeenCalledWith('number must be entered');
             expect(window.updateResultOnView).not.toHaveBeenCalledWith('Invalid operator you entered');
             expect(window.updateResultOnView).toHaveBeenCalledTimes(1);
-        })
-        
-        xit('should be split the expression to get number and operator', () =>{
-
-        })
-
-        xit('should get the number1', () => {
-
-        })
-
-        xit('should get the number2', () => {
-
-        })
-        
-        xit('should get the operator', () => {
-
-        })
-
-        xit('should call the calculator with num1, num2, operator', () => {
-
-        })
+        });
     })
     describe('calculateNumber(num1, num2, operator)', () => {
- 
+
         it('should call the add function', () => {
- 
+
         })
         it('should call the subtract function', () => {
         })
@@ -78,7 +54,7 @@ describe('main.js', () => {
 
     describe('updateResultOnView(message: string)', () => {
         let ele;
-        beforeAll(()=> {
+        beforeAll(() => {
             ele = document.createElement('span')
             ele.setAttribute('id', 'result_number');
             document.body.appendChild(ele);
