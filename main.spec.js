@@ -5,7 +5,7 @@ describe('main.js', () => {
         })
 
         it('should validate the operator, if failed call error dependency', () => {
-            spyOn(window, 'updateResultOnView').and.stub();
+            spyOn(window, 'updateResultOnView');
             /*
                 here stub means just to pretend the function has to called.
                 parameter 1 is the method or function which present on object.
@@ -16,18 +16,18 @@ describe('main.js', () => {
         })
 
         it('should validate the num1, if failed call error dependency', () => {
-            spyOn(window, 'updateResultOnView').and.stub();
+            spyOn(window, 'updateResultOnView');
             getInputFromUser({target: {value: 'asdf+5'}});
             expect(window.updateResultOnView).toHaveBeenCalled();
         })
         it('should validate the num2, if failed call error dependency', () => {
-            spyOn(window, 'updateResultOnView').and.stub();
+            spyOn(window, 'updateResultOnView');
             getInputFromUser({target: {value: '6+asdf'}});
             expect(window.updateResultOnView).toHaveBeenCalled();
         })
 
         it('should validate the num1 and num2, if passed no need to call error dependency', () => {
-            spyOn(window, 'updateResultOnView').and.stub();
+            spyOn(window, 'updateResultOnView');
             getInputFromUser({target: {value: '6+5'}});
             expect(window.updateResultOnView).toHaveBeenCalledTimes(0);
         })
