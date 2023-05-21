@@ -54,5 +54,7 @@ function updateResultOnView(message) {
 function showCalculatorVersion() {
     const calculator = new Calculator();
     let versionEle = document.getElementById('version_number');
-    versionEle.innerHTML = calculator.version;
+    if (versionEle) {
+        versionEle.innerHTML = calculator.version;
+    }
 }

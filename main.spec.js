@@ -172,6 +172,17 @@ describe('main.js', () => {
             expect(ele.innerHTML).toBe('Invalid operator')
         })
     })
+
+    describe('showCalculatorVersion()', () => {
+        it('should verison of the calculator in the view', () => {
+            spyOn(document, 'getElementById').and.returnValue({
+                innerHTML: null
+            });
+            const spy = spyOnProperty(Calculator.prototype, 'version', 'get');
+            showCalculatorVersion();
+            expect(spy).toHaveBeenCalled();
+        })
+    })
 })
 
 // spies is to isolate the dependancy function or another module used in that particular function
