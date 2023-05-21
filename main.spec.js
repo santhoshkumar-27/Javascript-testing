@@ -133,6 +133,12 @@ describe('main.js', () => {
             expect(spyUpdatedResultOnView).toHaveBeenCalledTimes(1);
 
         })
+        it('doesn\'t handle errors', () => {
+            const spyAdd = spyOn(Calculator.prototype, 'add').and.throwError('unable to add these numbers');
+            expect(function () {
+                return calculateNumber(1, 2, '+');
+            }).toThrowError('unable to add these numbers')
+        })
     })
 
     describe('updateResultOnView(message: string)', () => {
