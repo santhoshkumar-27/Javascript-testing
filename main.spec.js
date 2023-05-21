@@ -77,14 +77,14 @@ describe('main.js', () => {
             expect(spyDivide).toHaveBeenCalledTimes(1);
         })
         it('calls the updatedResultOnView executes the real implementation using callThrough', () => {
-                const spyUpdatedResultOnView = spyOn(window, 'updateResultOnView')
-                const spyAdd = spyOn(Calculator.prototype, 'add').and.callThrough()
-                // callThrough method call the real method and spy on that
+            const spyUpdatedResultOnView = spyOn(window, 'updateResultOnView')
+            const spyAdd = spyOn(Calculator.prototype, 'add').and.callThrough()
+            // callThrough method call the real method and spy on that
 
-                calculateNumber(1, 2, '+');
-                expect(spyUpdatedResultOnView).toHaveBeenCalled();
-                expect(spyAdd).toHaveBeenCalled();
-                expect(spyUpdatedResultOnView).toHaveBeenCalledWith(3);
+            calculateNumber(1, 2, '+');
+            expect(spyUpdatedResultOnView).toHaveBeenCalled();
+            expect(spyAdd).toHaveBeenCalled();
+            expect(spyUpdatedResultOnView).toHaveBeenCalledWith(3);
 
         })
 
@@ -93,14 +93,26 @@ describe('main.js', () => {
             const spyAdd = spyOn(Calculator.prototype, 'add').and.callFake(() => {
                 return 3
             })
-            // callThrough method call the real method and spy on that
+            // callFake we can implementation of customlogic for same functionli
 
             calculateNumber(1, 2, '+');
             expect(spyUpdatedResultOnView).toHaveBeenCalled();
             expect(spyAdd).toHaveBeenCalled();
             expect(spyUpdatedResultOnView).toHaveBeenCalledWith(3);
 
-    })
+        })
+
+        it('calls the updatedResultOnView executes the real implementation using returnValue', () => {
+            const spyUpdatedResultOnView = spyOn(window, 'updateResultOnView')
+            const spyAdd = spyOn(Calculator.prototype, 'add').and.returnValue(3)
+            // returnValue only return the value ans static of for that method and it return single value
+
+            calculateNumber(1, 2, '+');
+            expect(spyUpdatedResultOnView).toHaveBeenCalled();
+            expect(spyAdd).toHaveBeenCalled();
+            expect(spyUpdatedResultOnView).toHaveBeenCalledWith(3);
+
+        })
     })
 
     describe('updateResultOnView(message: string)', () => {
