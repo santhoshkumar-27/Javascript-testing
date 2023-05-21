@@ -1,5 +1,5 @@
 describe('main.js', () => {
-    xdescribe('getInputFromUser()', () => {
+    describe('getInputFromUser()', () => {
         it('should validate the operator, if failed call error dependency', () => {
             spyOn(window, 'updateResultOnView');
             /*
@@ -65,7 +65,7 @@ describe('main.js', () => {
 
     })
 
-    xdescribe('updateResultOnView(message: string)', () => {
+    describe('updateResultOnView(message: string)', () => {
         let ele;
         beforeAll(() => {
             ele = document.createElement('span')
