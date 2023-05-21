@@ -2,6 +2,7 @@ const operators = /\*|\+|\/|\-/;
 let result_number_ele;
 window.addEventListener('load', ($event) => {
     document.getElementById('valueEnter') && document.getElementById('valueEnter').addEventListener('change', getInputFromUser)
+    showCalculatorVersion();
 })
 function getInputFromUser(event) {
     const inputValue = event.target.value;
@@ -47,5 +48,11 @@ function calculateNumber(num1, num2, operator) {
 
 function updateResultOnView(message) {
     result_number_ele = document.getElementById('result_number');
-    result_number_ele.innerHTML = message;  
+    result_number_ele.innerHTML = message;
+}
+
+function showCalculatorVersion() {
+    const calculator = new Calculator();
+    let versionEle = document.getElementById('version_number');
+    versionEle.innerHTML = calculator.version;
 }

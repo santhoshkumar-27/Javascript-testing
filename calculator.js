@@ -5,8 +5,11 @@ class ArithmaticError extends Error {
     }
 }
 class Calculator {
+    total = 0;
     constructor() {
-        this.total = 0;
+    }
+    get version() {
+        return '0.1'
     }
     add(num1, num2) {
         return num1 + num2;
@@ -45,3 +48,12 @@ class Calculator {
 // Calculator.prototype.multiple =  (num1, num2) => {
 //     return  num1 * num2;
 // }
+
+
+// Object.defineProperty(Calculator, 'version', {
+//     get: function () {
+//         return '0.1';
+//     },
+//     configurable: true,
+//     enumerable: true,
+// })
