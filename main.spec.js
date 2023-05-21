@@ -178,9 +178,12 @@ describe('main.js', () => {
             spyOn(document, 'getElementById').and.returnValue({
                 innerHTML: null
             });
-            const spy = spyOnProperty(Calculator.prototype, 'version', 'get');
+            const spy = spyOnProperty(Calculator.prototype, 'version', 'get').and.returnValue('0.1');
             showCalculatorVersion();
             expect(spy).toHaveBeenCalled();
+            expect(spy).toHaveBeenCalledTimes(1);
+            // expect(spy).toHaveBeenCalledWith('0.1');
+            expect(spy()).toEqual('0.1')
         })
     })
 })
