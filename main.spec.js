@@ -49,18 +49,32 @@ describe('main.js', () => {
         })
         it('should call the add function', () => {
             const spyAdd = spyOn(Calculator.prototype, 'add')
-            calculateNumber(1, 2, '+')
+            calculateNumber(1, 2, '+');
             expect(spyAdd).toHaveBeenCalled();
             expect(spyAdd).toHaveBeenCalledWith(1, 2);
             expect(spyAdd).toHaveBeenCalledTimes(1);
 
         })
         it('should call the subtract function', () => {
+            const spySubtract = spyOn(Calculator.prototype, 'subtract')
+            calculateNumber(2, 1, '-');
+            expect(spySubtract).toHaveBeenCalled();
+            expect(spySubtract).toHaveBeenCalledWith(2, 1);
+            expect(spySubtract).toHaveBeenCalledTimes(1);
         })
         it('should call the multiply function', () => {
+            const spyMultiple = spyOn(Calculator.prototype, 'multiple')
+            calculateNumber(2, 1, '*');
+            expect(spyMultiple).toHaveBeenCalled();
+            expect(spyMultiple).toHaveBeenCalledWith(2, 1);
+            expect(spyMultiple).toHaveBeenCalledTimes(1);
         })
         it('should call the divide function', () => {
-
+            const spyDivide = spyOn(Calculator.prototype, 'divide')
+            calculateNumber(2, 1, '/');
+            expect(spyDivide).toHaveBeenCalled();
+            expect(spyDivide).toHaveBeenCalledWith(2, 1);
+            expect(spyDivide).toHaveBeenCalledTimes(1);
         })
 
     })

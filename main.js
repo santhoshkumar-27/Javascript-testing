@@ -37,7 +37,7 @@ function calculateNumber(num1, num2, operator) {
             result = calculator.multiple(num1, num2);
             break;
         case '/':
-            result = calculator.multiple(num1, num2);
+            result = calculator.divide(num1, num2);
             break;
         default:
             result = 'Invalid operator';
