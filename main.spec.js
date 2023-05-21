@@ -76,7 +76,7 @@ describe('main.js', () => {
             expect(spyDivide).toHaveBeenCalledWith(2, 1);
             expect(spyDivide).toHaveBeenCalledTimes(1);
         })
-        it('calls the updatedResultOnView', () => {
+        it('calls the updatedResultOnView executes the real implementation using callThrough', () => {
                 const spyUpdatedResultOnView = spyOn(window, 'updateResultOnView')
                 const spyAdd = spyOn(Calculator.prototype, 'add').and.callThrough()
                 // callThrough method call the real method and spy on that
@@ -87,6 +87,20 @@ describe('main.js', () => {
                 expect(spyUpdatedResultOnView).toHaveBeenCalledWith(3);
 
         })
+
+        it('calls the updatedResultOnView executes the real implementation using callFake', () => {
+            const spyUpdatedResultOnView = spyOn(window, 'updateResultOnView')
+            const spyAdd = spyOn(Calculator.prototype, 'add').and.callFake(() => {
+                return 3
+            })
+            // callThrough method call the real method and spy on that
+
+            calculateNumber(1, 2, '+');
+            expect(spyUpdatedResultOnView).toHaveBeenCalled();
+            expect(spyAdd).toHaveBeenCalled();
+            expect(spyUpdatedResultOnView).toHaveBeenCalledWith(3);
+
+    })
     })
 
     describe('updateResultOnView(message: string)', () => {
