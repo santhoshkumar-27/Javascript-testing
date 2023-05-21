@@ -85,6 +85,9 @@ describe('main.js', () => {
             expect(spyUpdatedResultOnView).toHaveBeenCalled();
             expect(spyAdd).toHaveBeenCalled();
             expect(spyUpdatedResultOnView).toHaveBeenCalledWith(3);
+            expect(spyAdd).toHaveBeenCalledTimes(1);
+            expect(spyUpdatedResultOnView).toHaveBeenCalledTimes(1);
+
 
         })
 
@@ -99,6 +102,8 @@ describe('main.js', () => {
             expect(spyUpdatedResultOnView).toHaveBeenCalled();
             expect(spyAdd).toHaveBeenCalled();
             expect(spyUpdatedResultOnView).toHaveBeenCalledWith(3);
+            expect(spyAdd).toHaveBeenCalledTimes(1);
+            expect(spyUpdatedResultOnView).toHaveBeenCalledTimes(1);
 
         })
 
@@ -111,6 +116,21 @@ describe('main.js', () => {
             expect(spyUpdatedResultOnView).toHaveBeenCalled();
             expect(spyAdd).toHaveBeenCalled();
             expect(spyUpdatedResultOnView).toHaveBeenCalledWith(3);
+            expect(spyAdd).toHaveBeenCalledTimes(1);
+            expect(spyUpdatedResultOnView).toHaveBeenCalledTimes(1);
+
+        })
+        it('calls the updatedResultOnView executes the real implementation using returnValues', () => {
+            const spyUpdatedResultOnView = spyOn(window, 'updateResultOnView')
+            const spyAdd = spyOn(Calculator.prototype, 'add').and.returnValues(3, null)
+            // returnValue only return the value ans static of for that method and it return single value
+
+            calculateNumber(1, 2, '+');
+            expect(spyUpdatedResultOnView).toHaveBeenCalled();
+            expect(spyAdd).toHaveBeenCalled();
+            expect(spyUpdatedResultOnView).toHaveBeenCalledWith(3);
+            expect(spyAdd).toHaveBeenCalledTimes(1);
+            expect(spyUpdatedResultOnView).toHaveBeenCalledTimes(1);
 
         })
     })
