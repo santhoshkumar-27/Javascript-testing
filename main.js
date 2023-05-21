@@ -1,4 +1,3 @@
-const calculator = new Calculator();
 const operators = /\*|\+|\/|\-/;
 let result_number_ele;
 window.addEventListener('load', ($event) => {
@@ -25,6 +24,7 @@ function getInputFromUser(event) {
 }
 
 function calculateNumber(num1, num2, operator) {
+    const calculator = new Calculator();
     let result = 0;
     switch (operator) {
         case '+':

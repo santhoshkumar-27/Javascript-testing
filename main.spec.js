@@ -41,6 +41,26 @@ describe('main.js', () => {
 
         it('should call the add function', () => {
 
+            var originalConstructor = Calculator,
+                spiedObj;
+            spyOn(window, 'Calculator').and.callFake(function () {
+                spiedObj = new originalConstructor();
+                spyOn(spiedObj, 'add');
+                return spiedObj;
+            });
+            // spyOn(window.Calculator, 'add');
+            spyOn(window, 'updateResultOnView');
+            // getInputFromUser({ target: { value: '6+5' } });
+            calculateNumber(1, 2, '+')
+            expect(spiedObj.add).toHaveBeenCalled();
+            expect(spiedObj.add).toHaveBeenCalledWith(6, 5);
+            expect(spiedObj.add).toHaveBeenCalledTimes(1);
+
+            // 
+            expect(window.updateResultOnView).toHaveBeenCalled();
+            expect(window.updateResultOnView).toHaveBeenCalledWith(11);
+            expect(window.updateResultOnView).toHaveBeenCalledTimes(1);
+
         })
         it('should call the subtract function', () => {
         })
