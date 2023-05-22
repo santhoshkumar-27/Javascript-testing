@@ -56,6 +56,10 @@ describe('calculator testing suites', () => { // this is test suite is group of 
                     we use done paramater, so that jasmine can wait until the done as been called
                 */
                 calculator.version.then((response) => {
+                    /*
+                        this is will trigger the real webservice for the testing purpose
+                        so we have to spyon that real api
+                    */
                     expect(response.version).toBe('0.4');
                     done()
                 })
