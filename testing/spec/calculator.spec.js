@@ -50,6 +50,11 @@ describe('calculator testing suites', () => { // this is test suite is group of 
         });
         describe('get version()', ()=> {
             it('should fetch verson from the external resources', (done) => {
+                /*
+                    Basically testing done in the synchronous order so that,
+                    asynchronous doesn't validated, in order to achieve the prior order to get
+                    we use done paramater, so that jasmine can wait until the done as been called
+                */
                 calculator.version.then((response) => {
                     expect(response.version).toBe('0.4');
                     done()
