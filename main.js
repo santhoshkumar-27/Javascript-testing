@@ -51,10 +51,12 @@ function updateResultOnView(message) {
     result_number_ele.innerHTML = message;
 }
 
-function showCalculatorVersion() {
+async function showCalculatorVersion() {
     const calculator = new Calculator();
     let versionEle = document.getElementById('version_number');
     if (versionEle) {
-        versionEle.innerHTML = calculator.version;
+        await calculator.version.then((value) => {
+            versionEle.innerHTML = value.version;
+        });
     }
 }

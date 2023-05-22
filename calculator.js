@@ -9,7 +9,16 @@ class Calculator {
     constructor() {
     }
     get version() {
-        return '0.1'
+        return fetch(
+            'https://gist.githubusercontent.com/leelanarasimha/4b3dde448c828ec54f29fcc727c680df/raw/096bb0f055877c5f8e7243518be7be03772d2c4a/version.json'
+        ).then((response) => {
+            // console.log('ressss', response.json())
+            return response.json();
+        }).then((jsonData) => {
+            return jsonData;            
+        }).catch((error) => {
+
+        })
     }
     add(num1, num2) {
         return num1 + num2;
