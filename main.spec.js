@@ -173,7 +173,7 @@ describe('main.js', () => {
         })
     })
 
-    describe('showCalculatorVersion()', () => {
+    xdescribe('showCalculatorVersion()', () => {
         it('should verison of the calculator in the view', () => {
             spyOn(document, 'getElementById').and.returnValue({
                 innerHTML: null

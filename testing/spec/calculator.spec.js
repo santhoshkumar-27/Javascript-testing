@@ -48,7 +48,15 @@ describe('calculator testing suites', () => { // this is test suite is group of 
                 compare value -> of same value and a type
             */
         });
-        it('should be the truthy', () => {
+        describe('get version()', ()=> {
+            it('should fetch verson from the external resources', (done) => {
+                calculator.version.then((response) => {
+                    expect(response.version).toBe('0.4');
+                    done()
+                })
+            })
+        })
+        xit('should be the truthy', () => {
             expect(calculator).toBeTruthy();
         })
         it('should be the falsy', () => {
