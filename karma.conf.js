@@ -5,12 +5,19 @@ module.exports = function (config) {
         files: [
             'customMatcher.js', '*.js', '*.spec.js'
         ],
-        plugins: ['karma-jasmine', 'karma-chrome-launcher'],
-        reporters: ['dots'],
+        plugins: ['karma-jasmine', 'karma-chrome-launcher', 'karma-coverage'],
+        reporters: ['dots', 'coverage'],
         colors: true,
         singleRun: true,
         // browsers: ['Chrome'],
         browsers: ['ChromeHeadless'],
+        preprocessors: {
+            '*.js': 'coverage'
+        },
+        coverageReporter: {
+            type: 'html',
+            dir: 'coverage/'
+        }
         //...
     });
 };
