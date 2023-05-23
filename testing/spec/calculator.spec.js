@@ -55,6 +55,7 @@ describe('calculator testing suites', () => { // this is test suite is group of 
                     asynchronous doesn't validated, in order to achieve the prior order to get
                     we use done paramater, so that jasmine can wait until the done as been called
                 */
+               spyOn(window, 'fetch').and.returnValue(Promise.resolve(new Response('{"version": "0.4"}')))
                 calculator.version.then((response) => {
                     /*
                         this is will trigger the real webservice for the testing purpose

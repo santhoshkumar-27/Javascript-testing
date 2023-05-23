@@ -173,17 +173,32 @@ describe('main.js', () => {
         })
     })
 
-    xdescribe('showCalculatorVersion()', () => {
-        it('should verison of the calculator in the view', () => {
-            spyOn(document, 'getElementById').and.returnValue({
+    describe('showCalculatorVersion()', () => {
+        let ele;
+        beforeAll(() => {
+            ele = document.createElement('span')
+            ele.setAttribute('id', 'version_number');
+            document.body.appendChild(ele);
+        })
+        afterAll(() => {
+            document.body.removeChild(ele)
+        })
+        it('should verison of the calculator in the view', (done) => {
+            const element = spyOn(document, 'getElementById').and.returnValue({
                 innerHTML: null
             });
-            const spy = spyOnProperty(Calculator.prototype, 'version', 'get').and.returnValue('0.1');
+            const spy = spyOnProperty(Calculator.prototype, 'version', 'get').and.returnValue(Promise.resolve('0.4'));
             showCalculatorVersion();
+            expect(spy).toBeTruthy()
             expect(spy).toHaveBeenCalled();
             expect(spy).toHaveBeenCalledTimes(1);
             // expect(spy).toHaveBeenCalledWith('0.1');
-            expect(spy()).toEqual('0.1')
+            // expect(spy()).toEqual('0.1')
+            spy().then( (version) => {
+                expect(version).toBe('0.4')
+                // expect(element().innerHTML).toBe(version);
+                done();
+            })
         })
     })
 })
