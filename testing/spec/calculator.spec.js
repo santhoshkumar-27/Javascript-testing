@@ -49,21 +49,22 @@ describe('calculator testing suites', () => { // this is test suite is group of 
             */
         });
         describe('get version()', ()=> {
-            it('should fetch verson from the external resources', (done) => {
+            it('should fetch verson from the external resources', async () => {
                 /*
                     Basically testing done in the synchronous order so that,
                     asynchronous doesn't validated, in order to achieve the prior order to get
                     we use done paramater, so that jasmine can wait until the done as been called
                 */
                spyOn(window, 'fetch').and.returnValue(Promise.resolve(new Response('{"version": "0.4"}')))
-                calculator.version.then((response) => {
+               const {version} = await calculator.version;
+                // calculator.version.then((response) => {
                     /*
                         this is will trigger the real webservice for the testing purpose
                         so we have to spyon that real api
                     */
-                    expect(response.version).toBe('0.4');
-                    done()
-                })
+                    expect(version).toBe('0.4');
+                    // done()
+                // })
             })
         })
         xit('should be the truthy', () => {

@@ -188,15 +188,15 @@ describe('main.js', () => {
                 innerHTML: null
             });
             const spy = spyOnProperty(Calculator.prototype, 'version', 'get').and.returnValue(Promise.resolve('0.4'));
-            showCalculatorVersion();
+            showCalculatorVersion()
             expect(spy).toBeTruthy()
             expect(spy).toHaveBeenCalled();
             expect(spy).toHaveBeenCalledTimes(1);
             // expect(spy).toHaveBeenCalledWith('0.1');
             // expect(spy()).toEqual('0.1')
             spy().then( (version) => {
-                expect(version).toBe('0.4')
-                // expect(element().innerHTML).toBe(version);
+                // expect(version).toBe('0.4')
+                expect(element().innerHTML).toBe(version);
                 done();
             })
         })
