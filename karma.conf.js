@@ -5,10 +5,12 @@ module.exports = function (config) {
         files: [
             'customMatcher.js', '*.js', '*.spec.js'
         ],
-        plugins: ['karma-jasmine'],
+        plugins: ['karma-jasmine', 'karma-chrome-launcher'],
         reporters: ['dots'],
         colors: true,
         singleRun: true,
+        // browsers: ['Chrome'],
+        browsers: ['ChromeHeadless'],
         //...
     });
 };
